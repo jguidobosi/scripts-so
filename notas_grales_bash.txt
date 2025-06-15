@@ -1,0 +1,9 @@
+El uso de opciones en scripts no apareció en curso redhat.
+esta es la fuente de lo que usamos:
+https://www.redhat.com/en/blog/arguments-options-bash-scripts
+
+hay que tratar de entenderlo
+
+
+
+

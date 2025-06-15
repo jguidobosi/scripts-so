@@ -94,39 +94,38 @@ while getopts ":tMv" option; do
                         exit;;
         esac
 done
-
 # Verifico uso correcto del comando
 if [[ ($# -eq 0 && $T_FLAG -eq 0) || ( $V_FLAG && ($MB_FLAG -eq 1 || $T_FLAG -eq 1) ) ]]; then
         MensajeError
         MensajeUso
         exit 1
 fi
-
 # Verifico flag VERSION
 if [[ V_FLAG -eq 1 ]]; then 
         MensajeVersion
         MensajeUso
         exit 0
 fi
-
-# Imprimir en archivo temporal
+# Verifico si se ingresó usuario
+USER_INGRESADO="$1"
+if [[ -z "$USER_INGRESADO" && $T_FLAG -eq 0 ]]; then
+    read -p "Ingrese el nombre de usuario: " USER_INGRESADO
+fi
+# Primer linea de tabla en archivo temporal
 ImprimirComoTabla "Usuario" "Home" "FileSystem" "Ocupa" "% Ocupado FS" > /tmp/script1_output.txt
 # Verif opcion t
 if [[ $T_FLAG == 1 ]]
 then
         ProcesarTodosLosUsuarios
 else
-        ProcesarUsuario $1
+        ProcesarUsuario $USER_INGRESADO
 fi
-
 # Escribo con CAT o LESS en base a num. de paginas
 if [[ "$(wc -l < "/tmp/script1_output.txt")" -gt "$(tput lines)" ]]; then
         less /tmp/script1_output.txt
 else
         cat /tmp/script1_output.txt
 fi
-
 # Borro archivo temporal
 rm -f /tmp/script1_output.txt
-
 # FIN

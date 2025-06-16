@@ -48,10 +48,11 @@ if [[ -z "$archivo_a_buscar" ]]; then
     read -p "Ingrese el nombre del archivo: " archivo_a_buscar
 fi
 
+# Buscar archivos con ese nombre en todo el sistema
 archivos_a_modificar=$(find / -type f -name "$archivo_a_buscar" 2>/dev/null)
 archivos_modificados_lista=()
 
-# Buscar archivos con ese nombre en todo el sistema
+# parseo archivos
 while IFS= read -r archivo; do
     # Agrego permiso escritura a resto
     chmod a+w $archivo

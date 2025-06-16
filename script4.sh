@@ -29,4 +29,5 @@ while true; do
         4) echo "Saliendo..."; break ;;
         *) echo "Opción inválida. Presione Enter para continuar..."; read ;;
     esac
+    read -p "Presione Enter... " 
 done

@@ -96,13 +96,13 @@ while getopts ":tMv" option; do
         esac
 done
 # Verifico uso correcto del comando
-if [[ $V_FLAG && ($MB_FLAG -eq 1 || $T_FLAG -eq 1) ]]; then
+if [[ $V_FLAG -eq 1 && ($MB_FLAG -eq 1 || $T_FLAG -eq 1) ]]; then
         MensajeError
         MensajeUso
         exit 1
 fi
 # Verifico flag VERSION
-if [[ V_FLAG -eq 1 ]]; then 
+if [[ $V_FLAG -eq 1 ]]; then 
         MensajeVersion
         MensajeUso
         exit 0

@@ -90,7 +90,8 @@ while getopts ":tMv" option; do
                         V_FLAG=1;
                         shift $((OPTIND - 1));;
                 \?) # Opcion invalida
-                        echo "Error: Opcion invalida"
+                        MensajeError
+                        MensajeUso
                         exit;;
         esac
 done

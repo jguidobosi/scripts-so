@@ -7,3 +7,11 @@ hay que tratar de entenderlo
 
 
 
+si o si entender estos parseos
+
+while IFS= read -r linea; do
+    # Agrego permiso escritura a resto
+    chmod a+w $archivo
+    # Agrego nombre archivo a lista
+    archivos_modificados+=("$archivo")
+done <<< $file

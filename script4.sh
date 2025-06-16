@@ -23,7 +23,7 @@ while true; do
     read -p "Ingrese una opción [1-4]: " opcion
 
     case "$opcion" in
-        1) ~/script-so/script1.sh ;;
+        1) ~/scripts-so/script1.sh ;;
         2) ~/scripts-so/script2.sh ;;
         3) ~/scripts-so/script3.sh ;;
         4) echo "Saliendo..."; break ;;

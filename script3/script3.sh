@@ -22,6 +22,10 @@ MensajeError(){
         echo "#ERROR: MAL USO DEL COMANDO!#"
         echo "#############################"
 }
+# calcular cubica con bc (admite flotante)
+calcularCubica(){
+    echo "$1^3" | bc -l
+}
 # main
 # OPCIONES
 while getopts ":v" option; do
@@ -53,8 +57,8 @@ if ! [[ $numeroIngresado =~ ^-?[0-9]+([.][0-9]+)?$ ]]; then
     exit 1
 fi
 
-# Calcular la cúbica usando bc (admite flotante)
-cubicaNumero=$(echo "$numeroIngresado^3" | bc -l)
+# Calcular la cúbica 
+cubicaNumero=$(calcularCubica "$numeroIngresado")
 
 # Mensaje
 mensajeResultado="La cúbica de $numeroIngresado es: $cubicaNumero"
